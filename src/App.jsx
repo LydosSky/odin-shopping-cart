@@ -1,3 +1,9 @@
+import { createBrowserRouter } from 'react-router-dom';
+import routes from './routes.jsx';
+import { RouterProvider } from 'react-router';
+
+const router = createBrowserRouter(routes);
+
 export default function App() {
-    return <h1 className="text-5xl  font-bold underline">Hello World</h1>;
+    return <RouterProvider router={router} />;
 }
