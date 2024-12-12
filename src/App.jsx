@@ -1,9 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom';
-import routes from './routes.jsx';
-import { RouterProvider } from 'react-router';
-
-const router = createBrowserRouter(routes);
+import { Outlet, RouterProvider } from 'react-router';
+import Navbar from './components/Navbar.jsx';
+import { useState } from 'react';
 
 export default function App() {
-    return <RouterProvider router={router} />;
+    const [state, setState] = useState('hello');
+    return (
+        <>
+            <Navbar state={state} />
+            <Outlet />
+        </>
+    );
 }

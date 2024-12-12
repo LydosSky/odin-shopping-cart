@@ -1,10 +1,18 @@
 import Home from './pages/Home';
 import Shop from './pages/Shop';
+import NotFound from './pages/NotFound';
+import App from './App';
 
 export default [
     {
-        path: '/',
-        element: <Home />,
+        element: <App />,
+        errorElement: <NotFound />,
+        children: [
+            {
+                path: '/',
+                element: <Home />,
+            },
+            { path: '/shop', element: <Shop /> },
+        ],
     },
-    { path: '/shop', element: <Shop /> },
 ];
