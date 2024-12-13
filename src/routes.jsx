@@ -1,6 +1,7 @@
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import NotFound from './pages/NotFound';
+import Checkout from './pages/Checkout';
 import App from './App';
 
 export default [
@@ -13,6 +14,7 @@ export default [
                 element: <Home />,
             },
             { path: '/shop', element: <Shop /> },
+            { path: '/checkout', element: <Checkout /> },
         ],
     },
 ];
