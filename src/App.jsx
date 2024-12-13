@@ -1,13 +1,25 @@
-import { Outlet, RouterProvider } from 'react-router';
+import { Outlet } from 'react-router';
 import Navbar from './components/Navbar.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import fetcher from './utils/fetcher.jsx';
+import categs from './utils/categories.js';
+const URL = 'https://fakestoreapi.com/products';
 
 export default function App() {
-    const [state, setState] = useState('hello');
+    const [categories, setCategories] = useState(categs);
+
+    // useEffect(function () {
+    //     fetcher(`${URL}/categories`)
+    //         .then((response) => setCategories(response))
+    //         .catch((error) => console.error(error));
+    // }, []);
+
     return (
-        <>
-            <Navbar state={state} />
-            <Outlet />
-        </>
+        <div className="h-screen">
+            <Navbar />
+            <div className="container mx-auto h-5/6">
+                {categories.length > 0 && <Outlet context={{ categories }} />}
+            </div>
+        </div>
     );
 }
