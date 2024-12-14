@@ -5,16 +5,17 @@ import Checkout from './pages/Checkout';
 import App from './App';
 
 export default [
-    {
-        element: <App />,
-        errorElement: <NotFound />,
-        children: [
-            {
-                path: '/',
-                element: <Home />,
-            },
-            { path: '/shop', element: <Shop /> },
-            { path: '/checkout', element: <Checkout /> },
-        ],
-    },
+  {
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      { path: '/shop', element: <Shop /> },
+      { path: '/shop/:name', element: <Shop /> },
+      { path: '/checkout', element: <Checkout /> },
+    ],
+  },
 ];
