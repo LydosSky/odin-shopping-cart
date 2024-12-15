@@ -3,9 +3,10 @@ import validateInput from '../utils/validateInput';
 
 export default function Card({ product }) {
   const [quantity, setQuantity] = useState(1);
-  console.log(product);
 
   function handleQuantity(e) {
+    // if (e.nativeEvent.inputType === 'deleteContentBackward')
+
     switch (e.target.innerText) {
       case '+':
         setQuantity((prev) => validateInput((prev += 1), 1, 10));
@@ -15,6 +16,7 @@ export default function Card({ product }) {
         return;
       default:
         setQuantity(() => validateInput(parseInt(e.target.value), 1, 10));
+        return;
     }
   }
 
@@ -23,25 +25,30 @@ export default function Card({ product }) {
   }
 
   return (
-    <div className="container p-3 shadow-lg border rounded-md flex flex-col gap-2 justify-center items-center">
-      <div className="container w-36 h-48 flex justify-center">
+    <div className="container p-3 shadow-lg border rounded-md flex flex-col gap-5 justify-center items-center">
+      <p className="text-center">{product.title}</p>
+      <div className="container w-36 h-36 flex justify-center">
         <img
-          className="w-full h-auto object-contain"
+          className="w-full h-auto object-contain height-"
           alt=""
           src={product.image}
         />
       </div>
+      <div className="container flex flex-col gap-3">
+        <p className="text-center">$ {product.price}</p>
+      </div>
+
       <div className="container flex gap-2 justify-center">
         <button
           onClick={handleQuantity}
-          className="bg-stone-300 px-2 rounded font-medium"
+          className="bg-stone-300 px-2 rounded font-medium hover:shadow-inner"
           type="button"
         >
           -
         </button>
         <input
           onChange={handleQuantity}
-          className="w-5 text-center font-"
+          className="w-6 p-1 text-center font-bold"
           name=""
           type="text"
           value={quantity}
