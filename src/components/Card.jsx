@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import validateInput from '../utils/validateInput';
+import Button from './Button';
 
 export default function Card({ product }) {
   const [quantity, setQuantity] = useState(1);
@@ -33,7 +34,7 @@ export default function Card({ product }) {
           src={product.image}
         />
       </div>
-      <div className="container">
+      <div className="container flex flex-col gap-3">
         <div className="container flex flex-col gap-3 text-center">
           <p>$ {product.price}</p>
           <p>{product.title}</p>
@@ -43,14 +44,8 @@ export default function Card({ product }) {
           <p></p>
         </div>
 
-        <div className="container flex gap-2 justify-center">
-          <button
-            onClick={handleQuantity}
-            className="bg-stone-300 px-2 rounded font-medium hover:shadow-inner"
-            type="button"
-          >
-            -
-          </button>
+        <div className="container flex gap-4 justify-center">
+          <Button extraStyle="px-2" innerText={'-'} click={handleQuantity} />
           <input
             onChange={handleQuantity}
             className="w-6 p-1 text-center font-bold"
@@ -58,22 +53,15 @@ export default function Card({ product }) {
             type="text"
             value={quantity}
           />
-          <button
-            onClick={handleQuantity}
-            className="bg-stone-300 px-2 rounded font-medium"
-            type="button"
-          >
-            +
-          </button>
+
+          <Button
+            extraStyle="px-2"
+            innerText={'+'}
+            clickHandler={handleQuantity}
+          />
         </div>
         <div className="container flex justify-center">
-          <button
-            className="bg-stone-400 px-2 rounded font-medium text-white"
-            onClick={handleAddToCart}
-            type="button"
-          >
-            Add To Cart
-          </button>
+          <Button innerText={'Add to Cart'} clickHandler={handleAddToCart} />
         </div>
       </div>
     </div>
