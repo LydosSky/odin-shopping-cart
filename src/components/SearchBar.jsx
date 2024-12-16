@@ -3,6 +3,7 @@ import { string } from 'prop-types';
 import { useState } from 'react';
 import Select from './Select';
 import dropdowns from '../utils/dropdowns';
+import Button from './Button';
 
 export default function SearchBar({ filters, setFilters }) {
   function updateState(part, newState) {
@@ -16,6 +17,10 @@ export default function SearchBar({ filters, setFilters }) {
     const name = event.target.name;
     const value = event.target.value;
     updateState(name, value);
+  }
+
+  function clearFilters() {
+    setFilters({ search: '', category: '', rating: '', sorting: '' });
   }
 
   return (
@@ -40,9 +45,7 @@ export default function SearchBar({ filters, setFilters }) {
         />
       ))}
       <div className="flex items-center">
-        <button className="p-1 bg-gray-300 text-white font-semibold rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
-          Clear Filter
-        </button>
+        <Button innerText="Clear Filters" clickHandler={clearFilters} />
       </div>
     </div>
   );
