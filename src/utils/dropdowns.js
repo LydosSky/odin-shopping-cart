@@ -1,12 +1,12 @@
 export default {
-  categories: [
+  category: [
     { value: '', text: 'Category' },
     { value: 'electronics', text: 'Electronics' },
     { value: 'jewelery', text: 'Jewelery' },
     { value: "men's clothing", text: "Men's Clothing" },
     { value: "women's clothing", text: "Women's Clothing" },
   ],
-  ratings: [
+  rating: [
     { value: '', text: 'Select a Rating' },
     { value: '5', text: '5 Stars' },
     { value: '4', text: '4 Stars Up' },

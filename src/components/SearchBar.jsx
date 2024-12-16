@@ -4,27 +4,38 @@ import { useState } from 'react';
 import Select from './Select';
 import dropdowns from '../utils/dropdowns';
 
-export default function SearchBar({ search, setSearch }) {
+export default function SearchBar({ filters, setFilters }) {
+  function updateState(part, newState) {
+    setFilters((prevState) => ({
+      ...prevState,
+      [part]: newState,
+    }));
+  }
+
   function handleChange(event) {
-    setSearch(event.target.value);
+    const name = event.target.name;
+    const value = event.target.value;
+    updateState(name, value);
   }
 
   return (
     <div className="container my-10 border p-3 flex justify-evenly">
-      <div className="flex">
+      <div className="flex p-4  m-3">
         <input
           placeholder="Search"
-          name=""
+          name="search"
           type="text"
-          value={search}
+          value={filters.search}
           onChange={handleChange}
         />
       </div>
       {Object.keys(dropdowns).map((key) => (
         <Select
+          key={crypto.randomUUID()}
           name={key}
           firstOption={dropdowns[key][0].text}
           options={dropdowns[key]}
+          handleChange={handleChange}
         />
       ))}
     </div>
@@ -32,6 +43,6 @@ export default function SearchBar({ search, setSearch }) {
 }
 
 SearchBar.propTypes = {
-  search: PropTypes.string,
-  setSearch: PropTypes.func,
+  filters: PropTypes.object,
+  setFilters: PropTypes.func,
 };

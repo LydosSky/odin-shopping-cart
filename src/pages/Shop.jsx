@@ -1,16 +1,13 @@
 import { useOutletContext, useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
-import { useState } from 'react';
 
 export default function Shop() {
-  const { name } = useParams();
-  const { products } = useOutletContext();
-  const [search, setSearch] = useState('');
+  const { products, filters, setFilters } = useOutletContext();
 
   return (
     <>
-      <SearchBar search={search} setSearch={setSearch} />
+      <SearchBar filters={filters} setFilters={setFilters} />
       <div className="container grid grid-cols-3 gap-10">
         {products.map((p) => (
           <Card key={p.id} product={p} />

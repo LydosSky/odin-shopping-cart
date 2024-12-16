@@ -10,6 +10,13 @@ const URL = 'https://fakestoreapi.com/products';
 export default function App() {
   const [categories, setCategories] = useState(categs);
   const [products, setProducts] = useState(prods);
+  const [filters, setFilters] = useState({
+    search: '',
+    category: '',
+    rating: '',
+    sorting: '',
+  });
+
   // useEffect(function () {
   //     fetcher(`${URL}/categories`)
   //         .then((response) => setCategories(response))
@@ -20,7 +27,9 @@ export default function App() {
     <div className="h-screen">
       <Navbar />
       <div className="container mx-auto h-5/6">
-        {categories.length > 0 && <Outlet context={{ categories, products }} />}
+        {categories.length > 0 && (
+          <Outlet context={{ filters, categories, products, setFilters }} />
+        )}
       </div>
     </div>
   );
