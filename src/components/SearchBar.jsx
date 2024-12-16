@@ -19,9 +19,10 @@ export default function SearchBar({ filters, setFilters }) {
   }
 
   return (
-    <div className="container my-10 border p-3 flex justify-evenly">
+    <div className="container my-10 border flex justify-evenly">
       <div className="flex p-4  m-3">
         <input
+          className="p-1 text-gray-700 font-semibold rounded focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
           placeholder="Search"
           name="search"
           type="text"
@@ -33,11 +34,16 @@ export default function SearchBar({ filters, setFilters }) {
         <Select
           key={crypto.randomUUID()}
           name={key}
-          firstOption={dropdowns[key][0].text}
+          value={filters[key]}
           options={dropdowns[key]}
           handleChange={handleChange}
         />
       ))}
+      <div className="flex items-center">
+        <button className="p-1 bg-gray-300 text-white font-semibold rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+          Clear Filter
+        </button>
+      </div>
     </div>
   );
 }

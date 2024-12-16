@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import validateInput from '../utils/validateInput';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
 export default function Card({ product }) {
   const [quantity, setQuantity] = useState(1);
@@ -45,7 +46,11 @@ export default function Card({ product }) {
         </div>
 
         <div className="container flex gap-4 justify-center">
-          <Button extraStyle="px-2" innerText={'-'} click={handleQuantity} />
+          <Button
+            extraStyle="px-2"
+            innerText={'-'}
+            clickHandler={handleQuantity}
+          />
           <input
             onChange={handleQuantity}
             className="w-6 p-1 text-center font-bold"
@@ -67,3 +72,7 @@ export default function Card({ product }) {
     </div>
   );
 }
+
+Card.propTypes = {
+  product: PropTypes.object,
+};
