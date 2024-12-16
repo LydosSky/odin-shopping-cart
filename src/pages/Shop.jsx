@@ -33,6 +33,25 @@ export default function Shop() {
     return product.rating.rate >= parseInt(rating);
   }
 
+  function sortProducts(product1, product2) {
+    if (sorting === '') return 0;
+    if (sorting === 'price-ascending') {
+      return product1.price - product2.price;
+    }
+
+    if (sorting === 'price-descending') {
+      return product2.price - product1.price;
+    }
+
+    if (sorting === 'rating-ascending') {
+      return product1.rating.rate - product2.rating.rate;
+    }
+
+    if (sorting === 'rating-descending') {
+      return product2.rating.rate - product1.rating.rate;
+    }
+  }
+
   return (
     <>
       <SearchBar filters={filters} setFilters={setFilters} />
@@ -41,6 +60,8 @@ export default function Shop() {
           .filter(filteredBySearch)
           .filter(filteredByCategory)
           .filter(filteredByRating)
+          .slice()
+          .sort(sortProducts)
           .map((p) => (
             <Card key={p.id} product={p} />
           ))}
