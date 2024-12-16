@@ -28,6 +28,11 @@ export default function Shop() {
     return regex.test(prodCategory);
   }
 
+  function filteredByRating(product) {
+    if (rating === '') return true;
+    return product.rating.rate >= parseInt(rating);
+  }
+
   return (
     <>
       <SearchBar filters={filters} setFilters={setFilters} />
@@ -35,6 +40,7 @@ export default function Shop() {
         {products
           .filter(filteredBySearch)
           .filter(filteredByCategory)
+          .filter(filteredByRating)
           .map((p) => (
             <Card key={p.id} product={p} />
           ))}
