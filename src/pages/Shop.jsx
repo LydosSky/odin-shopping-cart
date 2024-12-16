@@ -34,21 +34,17 @@ export default function Shop() {
   }
 
   function sortProducts(product1, product2) {
-    if (sorting === '') return 0;
-    if (sorting === 'price-ascending') {
-      return product1.price - product2.price;
-    }
-
-    if (sorting === 'price-descending') {
-      return product2.price - product1.price;
-    }
-
-    if (sorting === 'rating-ascending') {
-      return product1.rating.rate - product2.rating.rate;
-    }
-
-    if (sorting === 'rating-descending') {
-      return product2.rating.rate - product1.rating.rate;
+    switch (sorting) {
+      case 'price-ascending':
+        return product1.price - product2.price;
+      case 'price-descending':
+        return product2.price - product1.price;
+      case 'rating-ascending':
+        return product1.rating.rate - product2.rating.rate;
+      case 'rating-descending':
+        return product2.rating.rate - product1.rating.rate;
+      default:
+        return 0;
     }
   }
 
