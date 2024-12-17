@@ -3,7 +3,7 @@ import validateInput from '../utils/validateInput';
 import Button from './Button';
 import PropTypes from 'prop-types';
 
-export default function Card({ product }) {
+export default function Card({ product, setCart }) {
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantity(e) {
@@ -23,7 +23,7 @@ export default function Card({ product }) {
   }
 
   function handleAddToCart() {
-    console.log('Added to Cart');
+    setCart((prevState) => [...prevState, { quantity, product }]);
   }
 
   return (
@@ -75,4 +75,5 @@ export default function Card({ product }) {
 
 Card.propTypes = {
   product: PropTypes.object,
+  setCart: PropTypes.func,
 };

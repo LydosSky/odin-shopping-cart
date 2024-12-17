@@ -9,6 +9,7 @@ const URL = 'https://fakestoreapi.com/products';
 
 export default function App() {
   const [categories, setCategories] = useState(categs);
+  const [cart, setCart] = useState([]);
   const [products, setProducts] = useState(prods);
   const [filters, setFilters] = useState({
     search: '',
@@ -25,10 +26,19 @@ export default function App() {
 
   return (
     <div className="h-screen">
-      <Navbar />
+      <Navbar cart={cart} />
       <div className="container mx-auto h-5/6">
         {categories.length > 0 && (
-          <Outlet context={{ filters, categories, products, setFilters }} />
+          <Outlet
+            context={{
+              filters,
+              categories,
+              products,
+              setFilters,
+              cart,
+              setCart,
+            }}
+          />
         )}
       </div>
     </div>
