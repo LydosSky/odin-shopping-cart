@@ -1,9 +1,9 @@
-import { useOutletContext, useParams } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 
 export default function Shop() {
-  const { products, filters, setFilters, cart, setCart } = useOutletContext();
+  const { products, filters, setFilters, setCart } = useOutletContext();
   const { search, rating, category, sorting } = filters;
   function transformText(text) {
     return text.trim().toLowerCase();
@@ -15,7 +15,6 @@ export default function Shop() {
     const category = transformText(product.category);
     const description = transformText(product.description);
     const regex = new RegExp(transformText(search), 'i');
-
     return regex.test(title) || regex.test(description) || regex.test(category);
   }
 

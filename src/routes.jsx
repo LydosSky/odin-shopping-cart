@@ -14,7 +14,6 @@ export default [
         element: <Home />,
       },
       { path: '/shop', element: <Shop /> },
-      { path: '/shop/:name', element: <Shop /> },
       { path: '/checkout', element: <Checkout /> },
     ],
   },

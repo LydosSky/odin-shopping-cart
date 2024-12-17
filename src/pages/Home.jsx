@@ -9,7 +9,7 @@ export default function Home() {
       </div>
       <div className="grid grid-cols-2 gap-1">
         {context.categories.map((c) => (
-          <Link key={crypto.randomUUID()} to={`shop/${c}`}>
+          <Link key={crypto.randomUUID()} to={`shop`}>
             <div className="transition uppercase rounded bg-black bg-opacity-50 text-white p-4 flex items-center justify-center h-64 hover:shadow-xl hover:drop-shadow-xl">
               {c}
             </div>
