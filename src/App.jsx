@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router';
+import { Outlet, useNavigate } from 'react-router';
 import Navbar from './components/Navbar.jsx';
 import { useEffect, useState } from 'react';
 import fetcher from './utils/fetcher.jsx';
@@ -8,6 +8,7 @@ import prods from './utils/products.js';
 const URL = 'https://fakestoreapi.com/products';
 
 export default function App() {
+  const navigation = useNavigate();
   const [categories, setCategories] = useState(categs);
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState(prods);
@@ -37,6 +38,7 @@ export default function App() {
               setFilters,
               cart,
               setCart,
+              navigation,
             }}
           />
         )}
