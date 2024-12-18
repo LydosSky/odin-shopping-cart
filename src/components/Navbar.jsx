@@ -10,8 +10,16 @@ export default function Navbar({ cart }) {
             <Link to="/">Home</Link>
             <Link to="shop">Shop</Link>
           </div>
-          <div className="h-fit relative flex justify-center items-center">
-            <Link to="checkout">Cart</Link>
+          <div
+            disabled={cart.length <= 0}
+            className="h-fit relative flex justify-center items-center cursor-pointer"
+          >
+            <Link
+              className={cart.length === 0 ? 'disabled-link' : ''}
+              to="checkout"
+            >
+              Cart
+            </Link>
             <p className="absolute top-[-1rem] right-[-1.5rem] inline-flex items-center justify-center w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full border-2 border-white -translate-x-2 translate-y-2">
               {cart.reduce((prev, curr) => (prev += curr.quantity), 0)}
             </p>
