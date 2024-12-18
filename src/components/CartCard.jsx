@@ -8,13 +8,15 @@ export default function CartCard({ cartItem }) {
         <div className="container flex flex-col gap-4 p-3">
           <p>{cartItem.title}</p>
           <p>
+            <span className="font-extrabold"> Rating:</span>{' '}
             {cartItem.rating.rate} by {cartItem.rating.count}
           </p>
-          <p>{cartItem.price}</p>
+          <p>
+            <span className="font-extrabold"> Price:</span> ${cartItem.price}
+          </p>
           <p>{cartItem.description}</p>
-          <h2 className="font-bold text-red-600">
-            <span className="text-bold text-2xl">{cartItem.quantity}</span> Item
-            on Cart
+          <h2 className="font-extrabold text-red-600">
+            <span className="text-3xl">{cartItem.quantity}</span> Item
           </h2>
         </div>
       </div>

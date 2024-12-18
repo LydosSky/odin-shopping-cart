@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar({ cart }) {
   return (
     <>
-      <nav className="text-2xl bg-gray-100">
+      <nav className="sticky top-0 z-50 text-2xl bg-gray-100">
         <div className="p-2 container flex items-center justify-between mx-auto">
           <div className="flex gap-4">
             <Link to="/">Home</Link>

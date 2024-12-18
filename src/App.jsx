@@ -11,7 +11,7 @@ export default function App() {
   const navigation = useNavigate();
   const [categories, setCategories] = useState(categs);
   const [cart, setCart] = useState([]);
-  const [products, setProducts] = useState(prods);
+  const [products, setProducts] = useState();
   const [filters, setFilters] = useState({
     search: '',
     category: '',
@@ -19,14 +19,20 @@ export default function App() {
     sorting: '',
   });
 
-  // useEffect(function () {
-  //     fetcher(`${URL}/categories`)
-  //         .then((response) => setCategories(response))
-  //         .catch((error) => console.error(error));
-  // }, []);
+  useEffect(function () {
+    fetcher(`${URL}/categories`)
+      .then((response) => setCategories(response))
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(function () {
+    fetcher(`${URL}`)
+      .then((response) => setProducts(response))
+      .catch((error) => console.log(error));
+  }, []);
 
   return (
-    <div className="h-screen">
+    <div>
       <Navbar cart={cart} />
       <div className="container mx-auto h-5/6">
         {categories.length > 0 && (
