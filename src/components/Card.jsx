@@ -3,7 +3,7 @@ import validateInput from '../utils/validateInput';
 import Button from './Button';
 import PropTypes from 'prop-types';
 
-export default function Card({ product, setCart }) {
+export default function Card({ product, setCart, cart }) {
   const [quantity, setQuantity] = useState(1);
 
   function handleQuantity(e) {
@@ -23,7 +23,21 @@ export default function Card({ product, setCart }) {
   }
 
   function handleAddToCart() {
-    setCart((prevState) => [...prevState, { quantity, product }]);
+    let updateItem;
+    const index = cart.reduce(
+      (p, c, i) => (c.title === product.title ? i : p),
+      -1,
+    );
+
+    if (!(index < 0)) {
+      updateItem = cart.splice(index, 1)[0];
+      updateItem.quantity += quantity;
+    }
+
+    setCart([
+      ...cart,
+      updateItem !== undefined ? updateItem : { quantity, ...product },
+    ]);
   }
 
   return (
@@ -76,4 +90,5 @@ export default function Card({ product, setCart }) {
 Card.propTypes = {
   product: PropTypes.object,
   setCart: PropTypes.func,
+  cart: PropTypes.array,
 };

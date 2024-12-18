@@ -3,7 +3,7 @@ import Card from '../components/Card';
 import SearchBar from '../components/SearchBar';
 
 export default function Shop() {
-  const { products, filters, setFilters, setCart } = useOutletContext();
+  const { products, filters, setFilters, setCart, cart } = useOutletContext();
   const { search, rating, category, sorting } = filters;
   function transformText(text) {
     return text.trim().toLowerCase();
@@ -56,7 +56,7 @@ export default function Shop() {
           .slice()
           .sort(sortProducts)
           .map((p) => (
-            <Card key={p.id} product={p} setCart={setCart} />
+            <Card key={p.id} product={p} setCart={setCart} cart={cart} />
           ))}
       </div>
     </>
