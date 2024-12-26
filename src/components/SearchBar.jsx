@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-import { string } from 'prop-types';
-import { useState } from 'react';
 import Select from './Select';
 import dropdowns from '../utils/dropdowns';
 import Button from './Button';

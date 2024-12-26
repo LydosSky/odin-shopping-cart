@@ -3,7 +3,6 @@ import Navbar from './components/Navbar.jsx';
 import { useEffect, useState } from 'react';
 import fetcher from './utils/fetcher.jsx';
 import categs from './utils/categories.js';
-import prods from './utils/products.js';
 
 const URL = 'https://fakestoreapi.com/products';
 

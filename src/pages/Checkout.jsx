@@ -1,4 +1,4 @@
-import { useOutletContext, useNavigate } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import CartCard from '../components/CartCard';
 import Button from '../components/Button';
 
